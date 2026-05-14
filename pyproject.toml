@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "raucle-bench"
+version = "0.1.0"
+description = "Public adversarial leaderboard for prompt injection detection — the referee of the field"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Raucle", email = "oss@raucle.io" },
+]
+keywords = [
+    "llm",
+    "ai-security",
+    "benchmark",
+    "prompt-injection",
+    "leaderboard",
+    "evaluation",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+]
+
+# Zero mandatory deps for the framework. Each adapter pulls in its own.
+dependencies = []
+
+[project.optional-dependencies]
+raucle = ["raucle-detect>=0.5.0"]
+llm-guard = ["llm-guard>=0.3"]
+dev = [
+    "raucle-bench[raucle]",
+    "pytest>=7.0",
+    "ruff>=0.4",
+]
+
+[project.scripts]
+raucle-bench = "raucle_bench.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/craigamcw/raucle-bench"
+Repository = "https://github.com/craigamcw/raucle-bench"
+Leaderboard = "https://bench.raucle.com"
+Issues = "https://github.com/craigamcw/raucle-bench/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/raucle_bench"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*.py" = ["E402"]
+# HTML template with embedded CDN URLs that cannot be wrapped without
+# breaking the rendered output.
+"src/raucle_bench/report.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
