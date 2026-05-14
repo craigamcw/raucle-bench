@@ -32,6 +32,13 @@ def _register_optional_adapters() -> None:
     except ImportError:
         pass
 
+    try:
+        from raucle_bench.adapters.llm_guard import LLMGuardAdapter
+
+        ADAPTERS["llm-guard"] = lambda: LLMGuardAdapter()
+    except ImportError:
+        pass
+
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
