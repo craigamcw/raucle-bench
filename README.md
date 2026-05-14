@@ -7,7 +7,7 @@
 
 > Every guardrail vendor claims accuracy. Almost none publish reproducible numbers. This is the referee.
 
-- **Leaderboard**: [bench.raucle.com](https://bench.raucle.com) (coming once Cloudflare Pages is wired up; current run is in [`results/latest.html`](results/latest.html))
+- **Live leaderboard**: [raucle.com/bench/](https://raucle.com/bench/) — client-side dashboard that always reflects [`results/latest.json`](results/latest.json) in this repo.
 - **Dataset**: 165 curated prompts across 6 attack classes + benign baseline. Grows toward 10k+.
 - **Methodology**: precision, recall, F1, false-positive rate, strict-action match, p50/p99 latency per adapter.
 - **License**: MIT (code and dataset).
@@ -29,7 +29,7 @@ raucle-bench fixes this by being **the same dataset run against every adapter, w
 | `always-allow` baseline | ✅ Built in |
 | `always-block` baseline | ✅ Built in |
 | `raucle-detect` (strict / standard / permissive) | ✅ Built in |
-| `llm-guard` | ⏳ Adapter PR welcome |
+| `llm-guard` | ✅ Built in (install with `pip install '.[llm-guard]'`) |
 | `rebuff` | ⏳ Adapter PR welcome |
 | `vigil` | ⏳ Adapter PR welcome |
 | `nemo-guardrails` | ⏳ Adapter PR welcome |
