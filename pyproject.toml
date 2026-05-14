@@ -6,6 +6,7 @@ build-backend = "hatchling.build"
 name = "raucle-bench"
 version = "0.1.0"
 description = "Public adversarial leaderboard for prompt injection detection — the referee of the field"
+readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [
