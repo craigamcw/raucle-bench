@@ -38,8 +38,10 @@ dependencies = []
 [project.optional-dependencies]
 raucle = ["raucle-detect>=0.5.0"]
 llm-guard = ["llm-guard>=0.3"]
+# `dev` is intentionally adapter-free: testing the framework should not
+# require every adapter's transitive deps. The weekly-run workflow
+# installs `[raucle]` (or other adapters) on top.
 dev = [
-    "raucle-bench[raucle]",
     "pytest>=7.0",
     "ruff>=0.4",
 ]
