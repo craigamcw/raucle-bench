@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install with raucle-detect
-        run: pip install -e '.[raucle]'
+        run: pip install -e '.[raucle,llm-guard]'
       - name: Run benchmark
         run: raucle-bench
       - name: Commit results
